@@ -38,7 +38,7 @@ function saveUrlOfRestaurants(htmlurl) {
 
 async function fn() {
   // Saving Urls of different restaurants
-  var target = 200; //No. of restaurantes
+  var target = 50; //No. of restaurantes , change it to 200 if you want to get data from 200 restaurants
   for (let i = 0; i < target; i = i + 10) {
     html_link_to_parse = `https://www.yelp.com/search?cflt=restaurants&find_loc=San%20Francisco%2C%20CA&start=${i}`;
     await saveUrlOfRestaurants(html_link_to_parse);
