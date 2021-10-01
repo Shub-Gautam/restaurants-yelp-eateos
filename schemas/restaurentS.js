@@ -9,7 +9,7 @@ var ResSchema = new mongoose.Schema({
   imgurl: String,
   address: String,
   LatLng: String,
-  bussinesshours: String,
+  businesshours: String,
 });
 
 var resDataObject = new mongoose.model("restaurent", ResSchema);

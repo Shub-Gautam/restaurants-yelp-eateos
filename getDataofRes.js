@@ -5,39 +5,47 @@ const resDataObject = require("./schemas/restaurentS.js");
 
 var name, address, workinghours, imgurl, latandlang;
 
+// Helper function ================================
+
 function getDataofRes(url) {
-  // Extract Data
-  request(url, (err, response, html) => {
-    if (!err && response.statusCode == 200) {
-      var $ = cherrio.load(html);
+  return new Promise((resolve, reject) => {
+    // Extract Data
+    request(url, (err, response, html) => {
+      if (err) {
+        reject(err);
+      }
+      if (!err && response.statusCode == 200) {
+        var $ = cherrio.load(html);
 
-      //   Find Data on the page
-      name = $(".css-m7s7xv").text();
-      address = $("address").text();
-      workinghours = $(
-        "html>body>div>div>yelp-react-root>div>div>div>div>div>div>div>div>div>div>span>span"
-      ).text();
-      latandlang = $("").text();
-      imgurl = $("").text();
-    }
-    //   Adding Data to the mongodb object
-    var file = new resDataObject({
-      name: `${name}`,
-      imgurl: "imgurl",
-      address: `${address}`,
-      latlng: "latandlang",
-      bussinesshours: `${workinghours}`,
-    });
+        //   Find Data on the page
+        name = $(".css-m7s7xv").text();
+        address = $("address").text();
+        workinghours = $(
+          "html>body>div>div>yelp-react-root>div>div>div>div>div>div>div>div>div>div>span>span"
+        ).text();
+        latandlang = $("").text();
+        imgurl = $("").text();
+      }
+      //   Adding Data to the mongodb object
+      var file = new resDataObject({
+        name: `${name}`,
+        imgurl: "imgurl",
+        address: `${address}`,
+        latlng: "latandlang",
+        businesshours: `${workinghours}`,
+      });
 
-    // Saving to DB
-    setTimeout(() => {
-      const response = file
+      // Saving to DB
+      const res = file
         .save()
-        .then(console.log("successfully stored"))
+        .then(() => {
+          console.log("1 obj successfully stored");
+          resolve(res);
+        })
         .catch((err) => {
           console.error(err);
         });
-    }, 10000);
+    });
   });
 }
 
