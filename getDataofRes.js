@@ -28,12 +28,13 @@ function getDataofRes(url) {
           "html>body>div>div>yelp-react-root>div>div>div>div>div>div>div>div>div>div>span>span"
         ).text();
         latandlang = $("").text();
-        imgurl = $("").text();
+        imgurldata = $("img");
+        imgurl = imgurldata[2].attribs.src;
       }
       //   Adding Data to the mongodb object
       var file = new resDataObject({
         name: `${name}`,
-        imgurl: "imgurl",
+        imgurl: `${imgurl}`,
         address: `${address}`,
         latlng: "latandlang",
         businesshours: `${workinghours}`,
