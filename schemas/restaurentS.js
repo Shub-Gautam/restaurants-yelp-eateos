@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var mongouri = "mongodb://localhost:27017/resdata";
+var mongouri = process.env.MONGO_CONNECTION_URI;
 
 mongoose.connect(mongouri);
 
@@ -12,6 +12,6 @@ var ResSchema = new mongoose.Schema({
   businesshours: String,
 });
 
-var resDataObject = new mongoose.model("restaurent", ResSchema);
+var resDataObject = new mongoose.model("restaurant", ResSchema);
 
 module.exports = resDataObject;

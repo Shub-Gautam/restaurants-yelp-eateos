@@ -1,5 +1,9 @@
 var request = require("request-promise");
 var cherrio = require("cheerio");
+var dotenv = require("dotenv");
+
+// Configuring Environment Variable ;
+dotenv.config();
 
 const resDataObject = require("./schemas/restaurentS.js");
 
@@ -50,6 +54,10 @@ function getDataofRes(url) {
 }
 
 module.exports = getDataofRes;
+
+// For Bug Fixing =========================
+
+// getDataofRes("https://www.yelp.com/biz/starbelly-san-francisco");
 
 //   var imgurl = $("css-bq71j2").text();
 //   var imgurl = $("img").find(".photo-header-media-image__373c0__rKqBU")

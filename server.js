@@ -44,7 +44,7 @@ async function fn() {
     await saveUrlOfRestaurants(html_link_to_parse);
   }
 
-  console.log("No. of Url fetched" + urllist.length);
+  console.log("No. of Url fetched : " + urllist.length);
 
   // Extracting and saving data from restaurent's page
   for (let l = 0; l < urllist.length; l++) {
