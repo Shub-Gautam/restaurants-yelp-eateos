@@ -5,7 +5,7 @@ A Nodejs Application to extract information of different restaurants listed on y
 ### Setting up the project on your local machine:
 
 - Download the Project on you computer (Download "main" branch , Dont download "feature" branch).
-- Change the MongoDB Uri String in the module and create a database "resdata" and a collection "restaurents".
+- Change the MongoDB Uri String in the .env file and create a database "resdata" and a collection "restaurents".
 - Inside Your project Run command : npm start
 - That's it !, your program is all setup.
 
@@ -16,6 +16,7 @@ A Nodejs Application to extract information of different restaurants listed on y
 - cheerio (For Parsing HTML String)
 - request-promise (For Requesting Page Content)
 - Xpath Finder (To get path of a Particular element on the page)
+- dotenv to generate env variable
 
 ### Working
 
