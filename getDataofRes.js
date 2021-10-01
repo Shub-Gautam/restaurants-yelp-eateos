@@ -20,26 +20,28 @@ function getDataofRes(url) {
       latandlang = $("").text();
       imgurl = $("").text();
     }
+    //   Adding Data to the mongodb object
+    var file = new resDataObject({
+      name: `${name}`,
+      imgurl: "imgurl",
+      address: `${address}`,
+      latlng: "latandlang",
+      bussinesshours: `${workinghours}`,
+    });
+
+    // Saving to DB
+    setTimeout(() => {
+      const response = file
+        .save()
+        .then(console.log("successfully stored"))
+        .catch((err) => {
+          console.error(err);
+        });
+    }, 10000);
   });
-
-  //   Adding Data to the mongodb object
-  var file = new resDataObject({
-    name: name,
-    imgurl: "imgurl",
-    address: address,
-    latlng: "latandlang",
-    bussinesshours: workinghours,
-  });
-
-  setTimeout(() => {
-    const response = file.save().then(console.log("successfully stored"));
-  }, 10000);
-
-  // Save it to the mongodb Atlas
-  // Define another module for saving this.
 }
 
-getDataofRes("https://www.yelp.com/biz/firepie-san-francisco");
+module.exports = getDataofRes;
 
 //   var imgurl = $("css-bq71j2").text();
 //   var imgurl = $("img").find(".photo-header-media-image__373c0__rKqBU")

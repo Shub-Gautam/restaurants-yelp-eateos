@@ -11,6 +11,7 @@ var url = "https://www.yelp.com/search?cflt=restaurants";
 const urllist = [];
 
 // we have yo make this function syncronous
+// Function to extract url of restaurents
 function saveUrlOfRestaurents(htmlurl) {
   request(htmlurl, (err, response, html) => {
     if (!err && response.statusCode == 200) {
@@ -25,10 +26,13 @@ function saveUrlOfRestaurents(htmlurl) {
   });
 }
 
+// Saving Urls of different restaurents
 for (let i = 0; i < 20; i = i + 10) {
   html_link_to_parse = `https://www.yelp.com/search?cflt=restaurants&find_loc=San%20Francisco%2C%20CA&start=${10}`;
   saveUrlOfRestaurents(url);
 }
+
+// Extracting and saving data from restaurent's page
 
 setTimeout(() => {
   console.log(urllist);
